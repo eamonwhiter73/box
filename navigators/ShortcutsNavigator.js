@@ -18,7 +18,7 @@ const ShortcutsNavigator = createStackNavigator({
   SelectHours: {
     screen: SelectHours,
     navigationOptions: {
-      title: 'Setup',
+      title: 'Select Time(s)',
       headerTransparent: true
     }
   }

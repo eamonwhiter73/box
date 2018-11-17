@@ -63,16 +63,16 @@ export default class ShortcutsHome extends React.Component {
     const { navigate } = this.props.navigation;
     switch(strategy) {
     case 'four':
-      
+      navigate('SelectHours', { tpd: 'one/shortcut', every: 4 });
       break;
     case 'six':
-      
+      navigate('SelectHours', { tpd: 'one/shortcut', every: 6 });
       break;
     case 'twelve':
-      
+      navigate('SelectHours', { tpd: 'one/shortcut', every: 12 });
       break;
     case 'twenty_four':
-      
+      navigate('SelectHours', { tpd: 'one/shortcut', every: 24 });
       break;
     case 'daily':
       navigate('Tpd', { strategy: 'daily' });
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#7498da',
     color: 'white',
     fontWeight: '700',
-    marginTop: 10,
+    marginTop: 15,
   },
   button: {
     padding: 30,
