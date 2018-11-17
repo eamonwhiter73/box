@@ -9,7 +9,7 @@ export default class SelectHours extends React.Component {
       <View styles={styles.container}>
         <Text>Number of times to dispense medication per day:</Text>
         <View styles={styles.choices}>
-          {tbd != 'one' ? true : false &&
+          {tpd != 'one' ? true : false &&
             <View>
               <View>
                 <View styles={styles.choice}>
@@ -27,7 +27,7 @@ export default class SelectHours extends React.Component {
                     <Picker.Item label='7' value={7}/>
                     <Picker.Item label='8' value={8}/>
                     <Picker.Item label='9' value={9}/>
-                    {tbd === 'two' ? true : false &&
+                    {tpd === 'two' ? true : false &&
                       <View>
                         <Picker.Item label='10' value={10}/>
                         <Picker.Item label='11' value={11}/>
@@ -37,7 +37,7 @@ export default class SelectHours extends React.Component {
                   <Text>AM</Text>
                 </View>
                 <View>
-                  {tbd === 'four' ? true : false &&
+                  {tpd === 'four' ? true : false &&
                     <View styles={styles.choice}>
                       <Text>Late morning:</Text>
                       <Picker
@@ -53,7 +53,7 @@ export default class SelectHours extends React.Component {
                 </View>
               </View>
               <View>
-                {tbd != 'two' ? true : false &&
+                {tpd != 'two' ? true : false &&
                   <View styles={styles.choice}>
                     <Text>Afternoon</Text>
                     <Picker
@@ -77,7 +77,7 @@ export default class SelectHours extends React.Component {
                   selectedValue={this.state.nighttime}
                   style={{ height: 50, width: 50 }}
                   onValueChange={(itemValue, itemIndex) => this.setState({nighttime: itemValue})}>
-                  {tbd === 'two' ? true : false &&
+                  {tpd === 'two' ? true : false &&
                     <View>
                       <Picker.Item label='12' value={12}/>
                       <Picker.Item label='1' value={13}/>
@@ -99,7 +99,7 @@ export default class SelectHours extends React.Component {
               </View>
             </View>
           }
-          {tbd === 'one' ? true : false &&
+          {tpd === 'one' ? true : false &&
             <View style={styles.choices}>
               {tpd === 'shortcut' ? true : false &&
                 <View>
@@ -158,7 +158,7 @@ export default class SelectHours extends React.Component {
   }
 
   methodSelect = () => {
-    //
+    
   }
 }
 

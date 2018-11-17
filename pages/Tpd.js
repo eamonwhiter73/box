@@ -27,85 +27,84 @@ export default class Tpd extends React.Component {
         <View style={styles.choices}>
           <View style={styles.section}>
             <TouchableOpacity
-              style={strategy === 'daily' ? styles.button : styles.split_button}
-              onPress={() => this.methodSelect('one')}>
-                <Text style={strategy === 'daily' ? styles.button_text : styles.split_button_text}>1</Text>
+              style={{...(strategy === 'daily' ? styles.button : styles.split_button), backgroundColor: this.state.backgroundColor1}}
+              onPress={() => strategy === 'daily' ? this.methodSelect('one') : this.holdMethodSelect(1)}>
+                <Text style={{...(strategy === 'daily' ? styles.button_text : styles.split_button_text), backgroundColor: this.state.backgroundColor1}}>1</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={strategy === 'daily' ? styles.button : styles.split_button}
-              onPress={() => this.methodSelect('two')}>
-                <Text style={strategy === 'daily' ? styles.button_text : styles.split_button_text}>2</Text>
+              style={{...(strategy === 'daily' ? styles.button : styles.split_button), backgroundColor: this.state.backgroundColor2}}
+              onPress={() => strategy === 'daily' ? this.methodSelect('two') : this.holdMethodSelect(2)}>
+                <Text style={{...(strategy === 'daily' ? styles.button_text : styles.split_button_text), backgroundColor: this.state.backgroundColor2}}>2</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.section}>
             <TouchableOpacity
-              style={strategy === 'daily' ? styles.button : styles.split_button}
-              onPress={() => this.methodSelect('three')}>
-                <Text style={strategy === 'daily' ? styles.button_text : styles.split_button_text}>3</Text>
+              style={{...(strategy === 'daily' ? styles.button : styles.split_button), backgroundColor: this.state.backgroundColor3}}
+              onPress={() => strategy === 'daily' ? this.methodSelect('three') : this.holdMethodSelect(3)}>
+                <Text style={{...(strategy === 'daily' ? styles.button_text : styles.split_button_text), backgroundColor: this.state.backgroundColor3}}>3</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={strategy === 'daily' ? styles.button : styles.split_button}
-              onPress={() => this.methodSelect('four')}>
-                <Text style={strategy === 'daily' ? styles.button_text : styles.split_button_text}>4</Text>
+              style={{...(strategy === 'daily' ? styles.button : styles.split_button), backgroundColor: this.state.backgroundColor4}}
+              onPress={() => strategy === 'daily' ? this.methodSelect('four') : this.holdMethodSelect(4)}>
+                <Text style={{...(strategy === 'daily' ? styles.button_text : styles.split_button_text), backgroundColor: this.state.backgroundColor4}}>4</Text>
             </TouchableOpacity>
           </View>
         </View>
-        {strategy === 'custom daily' &&
+        {strategy != 'daily' &&
           <View style={styles.section_column}>
-            <Text style={styles.choose_day_text}>Choose the days you would like to dispense your medication:</Text>
-            <View style={styles.choices_row}>
-              <TouchableOpacity style={styles.day_button}>
-                <Text style={styles.day_button_text}>Mon</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.day_button}>
-                <Text style={styles.day_button_text}>Tue</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.day_button}>
-                <Text style={styles.day_button_text}>Wed</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.day_button}>
-                <Text style={styles.day_button_text}>Thur</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.day_button}>
-                <Text style={styles.day_button_text}>Fri</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.day_button}>
-                <Text style={styles.day_button_text}>Sat</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.day_button}>
-                <Text style={styles.day_button_text}>Sun</Text>
-              </TouchableOpacity>
+            <View>
+              {strategy === 'custom daily' &&
+                <Text style={styles.choose_day_text}>Choose the days you would like to dispense your medication:</Text>
+              }
+            </View>
+            <View>
+              {strategy === 'weekly' &&
+                <Text style={styles.choose_day_weekly_text}>Choose which day of the week you would like to dispense your medication:</Text>
+              }
+            </View>
+            <View>
+              <View style={styles.choices_row}>
+                <TouchableOpacity style={{...styles.day_button, backgroundColor:this.state.backgroundColormon}}
+                    onPress={() => this.holdDaysSelect('mon')}>
+                  <Text style={{...styles.day_button_text, backgroundColor:this.state.backgroundColormon}}>Mon</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{...styles.day_button, backgroundColor:this.state.backgroundColortue}}
+                    onPress={() => this.holdDaysSelect('tue')}>
+                  <Text style={{...styles.day_button_text, backgroundColor:this.state.backgroundColortue}}>Tue</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{...styles.day_button, backgroundColor:this.state.backgroundColorwed}}
+                    onPress={() => this.holdDaysSelect('wed')}>
+                  <Text style={{...styles.day_button_text, backgroundColor:this.state.backgroundColorwed}}>Wed</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{...styles.day_button, backgroundColor:this.state.backgroundColorthur}}
+                    onPress={() => this.holdDaysSelect('thur')}>
+                  <Text style={{...styles.day_button_text, backgroundColor:this.state.backgroundColorthur}}>Thur</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{...styles.day_button, backgroundColor:this.state.backgroundColorfri}}
+                    onPress={() => this.holdDaysSelect('fri')}>
+                  <Text style={{...styles.day_button_text, backgroundColor:this.state.backgroundColorfri}}>Fri</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{...styles.day_button, backgroundColor:this.state.backgroundColorsat}}
+                    onPress={() => this.holdDaysSelect('sat')}>
+                  <Text style={{...styles.day_button_text, backgroundColor:this.state.backgroundColorsat}}>Sat</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{...styles.day_button, backgroundColor:this.state.backgroundColorsun}}
+                    onPress={() => this.holdDaysSelect('sun')}>
+                  <Text style={{...styles.day_button_text, backgroundColor:this.state.backgroundColorsun}}>Sun</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
         }
-        {strategy === 'weekly' &&
-          <View style={styles.section_column}>
-            <Text style={styles.choose_day_weekly_text}>Choose which day of the week you would like to dispense your medication:</Text>
-            <View style={styles.choices_row}>
-              <TouchableOpacity style={styles.day_button}>
-                <Text style={styles.day_button_text}>Mon</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.day_button}>
-                <Text style={styles.day_button_text}>Tue</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.day_button}>
-                <Text style={styles.day_button_text}>Wed</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.day_button}>
-                <Text style={styles.day_button_text}>Thur</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.day_button}>
-                <Text style={styles.day_button_text}>Fri</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.day_button}>
-                <Text style={styles.day_button_text}>Sat</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.day_button}>
-                <Text style={styles.day_button_text}>Sun</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        }
+        <View>
+          {strategy != 'daily' &&
+            <TouchableOpacity
+              onPress={this.next}
+              style={styles.next_button}>
+              <Text style={styles.next_text}>NEXT</Text>
+            </TouchableOpacity>
+          }
+        </View>
       </View>
     );
   }
@@ -113,6 +112,66 @@ export default class Tpd extends React.Component {
   methodSelect = (strategy) => {
     const { navigate } = this.props.navigation;
     navigate('SelectHours', { tpd: strategy });
+  }
+
+  changeTpdButtonColor = (strategy) => {
+    const key = 'backgroundColor' + strategy.toString();
+    this.state[key] === '#7498da' ? this.setState({[key]: '#cd91d4'}) : this.setState({[key]: '#7498da'})
+  }
+
+  changeDaysButtonColor = (strategy) => {
+    const key = 'backgroundColor' + strategy;
+    this.state[key] === '#7498da' ? this.setState({[key]: '#cd91d4'}) : this.setState({[key]: '#7498da'})
+  }
+
+  holdMethodSelect = (strategy) => {
+    this.changeButtonColor(strategy);
+
+    this.setState({customMethod: strategy});
+  }
+
+  holdDaysSelect = (day) => {
+    this.changeDaysButtonColor(day);
+
+    let days = this.state.days;
+    days.push(day);
+
+    this.setState({days: days});
+  }
+
+  next = () => {
+    const { navigate } = this.props.navigation;
+    navigate('SelectHours', { tpd: this.state.customMethod.toString(), days: this.state.days });
+  }
+
+  componentDidMount() {
+    for (var i = 1; i < 5; i++) {
+      const key = 'backgroundColor'+i.toString();
+      this.setState({[key]: '#7498da'});
+    }
+  }
+
+  constructor() {
+    super();
+
+    this.methodSelect = this.methodSelect.bind(this);
+    this.changeTpdButtonColor = this.changeTpdButtonColor.bind(this);
+    this.changeDaysButtonColor = this.changeDaysButtonColor.bind(this);
+    this.holdMethodSelect = this.holdMethodSelect.bind(this);
+    this.next = this.next.bind(this);
+    this.holdDaysSelect = this.holdDaysSelect.bind(this);
+
+    this.state = {
+      customMethod: 2,
+      days: [],
+      backgroundColormon: '#7498da',
+      backgroundColortue: '#7498da',
+      backgroundColorwed: '#7498da',
+      backgroundColorthur: '#7498da',
+      backgroundColorfri: '#7498da',
+      backgroundColorsat: '#7498da',
+      backgroundColorsun: '#7498da',
+    }
   }
 }
 
@@ -131,7 +190,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   choices_row: {
-    flex: 1,
+    flex: 0.8,
     flexDirection: 'row',
     backgroundColor: '#fff',
     alignItems: 'center',
@@ -169,41 +228,46 @@ const styles = StyleSheet.create({
   button_text: {
     flex: 1,
     alignSelf: 'center',
-    backgroundColor: '#7498da',
     color: 'white',
     fontWeight: '700',
     marginTop: 80,
   },
   button: {
     padding: 30,
-    backgroundColor: '#7498da',
-    width: Dimensions.get('window').width / 2 - 22.5
+    width: Dimensions.get('window').width / 2 - 22.5,
   },
   day_button: {
     paddingBottom: 1,
-    backgroundColor: '#7498da',
     width: Dimensions.get('window').width / 7 - 5,
-    margin: 2
+    margin: 2,
   },
   day_button_text: {
     flex: 1,
     alignSelf: 'center',
-    backgroundColor: '#7498da',
     color: 'white',
     fontWeight: '700',
-    marginTop: 80,
+    marginTop: 60,
   },
   split_button: {
     paddingBottom: 1,
-    backgroundColor: '#7498da',
-    width: Dimensions.get('window').width / 2 - 22.5
+    width: Dimensions.get('window').width / 2 - 22.5,
   },
   split_button_text: {
     flex: 1,
     alignSelf: 'center',
-    backgroundColor: '#7498da',
     color: 'white',
     fontWeight: '700',
     marginTop: 45,
   },
+  next_button: {
+    width: Dimensions.get('window').width - 10,
+    backgroundColor: '#7498da',
+    padding: 30
+  },
+  next_text: {
+    alignSelf: 'center',
+    color: 'white',
+    fontWeight: '700',
+    backgroundColor: '#7498da'
+  }
 });
